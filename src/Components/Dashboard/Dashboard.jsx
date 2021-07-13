@@ -24,7 +24,7 @@ const clientes = [
 
 ]
 const pagos = [
-  {tipo:"tpag", nombre:"Todos los pagos", icono:"todos", path:'/Components/Pagos/Pagos'},
+  {tipo:"tpag", nombre:"Todos los pagos", icono:"pagog", path:'/Components/Pagos/Pagos'},
   //{tipo:"pag", nombre:"Pagos vencidos", icono:"vencidos"},
 ]
 const oprapida = [

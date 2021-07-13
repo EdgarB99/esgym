@@ -14,6 +14,7 @@ const porNombre = {
     editar: IoConstructOutline,
     eliminar: IoAdd,
     his:IoReaderOutline,
+    pagog:HiCash,
     salir:IoExit
 }
 
@@ -33,7 +34,7 @@ const Iconos = ({value}) => {
 }
 
 export const vValidos=[
-    "todos","vencidos","avencer","nuevo","nuevop","editar","eliminar","his","salir"]
+    "todos","vencidos","avencer","nuevo","nuevop","editar","eliminar","his","salir","pagog"]
 
 Iconos.propTypes = {
     value :  PropTypes.oneOf(vValidos).isRequired

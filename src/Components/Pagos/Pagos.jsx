@@ -1,10 +1,11 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {Grid, Button, Typography, TextField, CssBaseline, Container, Divider} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import { useFirebaseApp, useUser } from 'reactfire';
 
 /*OPCION PARA VER LOS PAGOS*/
 
@@ -25,57 +26,45 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
+    submit: {
+      margin: (3, 0, 2),
+    },
   });
 
-  
-//Variables
-const Example1 =[
-    {idpag: 1, fechapag: '08/12/2021',user: 'usuario1', monto:234},
-    {idpag: 2, fechapag: '08/12/2021',user: 'usuario2', monto:50}, 
-    {idpag: 3, fechapag: '08/12/2021',user: 'usuario1', monto:234},
-    {idpag: 4, fechapag: '08/12/2021',user: 'usuario3', monto:200},
-    {idpag: 5, fechapag: '08/12/2021',user: 'usuario4', monto:150},
-    {idpag: 6, fechapag: '08/12/2021',user: 'usuario4', monto:150},
-    {idpag: 7, fechapag: '08/12/2021',user: 'usuario5', monto:300},
+const Pagos = () => {
 
-]
-
-const renderCardList = eventC => (objs) =>{
-
-    const {idpag,fechapag,user,monto} = objs
+    //Conexion 
+    const firebase= useFirebaseApp();
+    const [pagos, setPagos] = useState([]);
     const classes = useStyles();
 
-    return(
-        <Grid item xs md={4} lg={4} xl={4}>
-        <Card key={idpag} className={classes.root}>
-        <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            {fechapag}
-          </Typography>
-          <Typography variant="h5" component="h3">
-            {user}
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            Usuario
-          </Typography>
-          <Typography variant="body2" component="p">
-            Cantidad de pago: ${monto}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Eliminar Pago</Button>
-        </CardActions>
-        </Card>
-        </Grid>
-    )
-}
-const eventC = () => {
-    console.log("Avrido");  
-    //console.log(obj.path);
-   // history.push(enlace);
-  }
+     //PROCESO DE ELIMINACIÓN POR USER
+     function deletePag (c){
+      console.log(c);  
+      firebase.database().ref(`Pagos/${c}`).remove()
+    }
 
-const Pagos = () => {
+    //APLICACION DE USEFFECT PARA EL MAPEADO
+    useEffect(() => {
+      firebase.database().ref('Pagos').on('value',(pagos) => {
+        let ArregloPag = []
+        try{
+          pagos.forEach((pagos)=>{
+            let newPag = {
+              clave: pagos.val().clave,
+              dia: pagos.val().dia,
+              monto: pagos.val().monto,
+              pagoid: pagos.val().pagoid,
+            }
+            ArregloPag.push(newPag)
+          })
+          setPagos(ArregloPag)
+        }catch(error){
+          console.log(error)
+          setPagos(null)
+        }
+      }
+    )}, [])
     return (
         <>
             <CssBaseline />
@@ -83,7 +72,38 @@ const Pagos = () => {
                 <Typography variant="h4" justify="center" >Lista de pagos</Typography>
                 <Grid container direction="row" spacing={3}>
                 <>
-                    {Example1.map(obj => renderCardList(eventC)(Example1))}
+                    {pagos.map(pago => {
+                          return(
+                            <Grid item xs md={4} lg={4} xl={4}>
+                            <Card key={pago.pagoid+pago.clave} className={classes.root}>
+                            <CardContent>
+                              <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                Clave: {pago.clave}
+                              </Typography>
+                              <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                Pago por:
+                              </Typography>
+                              <Typography variant="h5" component="h3">
+                                $ {pago.monto}
+                              </Typography>
+                              <Typography className={classes.pos} color="textSecondary">
+                                Al Usuario:
+                              </Typography>
+                              <Typography variant="h5" component="h3">
+                                {pago.pagoid}
+                              </Typography>
+                              <Typography className={classes.title} color="textSecondary" gutterBottom>
+                                Fecha del pago: {pago.dia}
+                              </Typography>
+                            </CardContent>
+                            <CardActions>
+                            <Button variant="contained" size="small" color="secondary" className={classes.submit}
+                              onClick={() => deletePag(pago.pagoid+pago.clave)}>Cacelar Pago</Button>
+                            </CardActions>
+                            </Card>
+                            </Grid>
+                        )
+                    })}
                 </>            
                 </Grid>
             </Container>
