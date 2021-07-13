@@ -20,7 +20,7 @@ const clientes = [
   //{tipo:"cli", nombre:"Clientes vencidos", icono:"vencidos"},
   //{tipo:"rcli", nombre:"Clientes regulares", icono:"avencer", path:'/rcli'},
   {tipo:"ecli", nombre:"Editar cliente", icono:"editar", path:'/Components/Clientes/ModCliente'},
-  {tipo:"dcli", nombre:"Eliminar cliente", icono:"editar", path:'/Components/Clientes/ElimClientes'},
+  //{tipo:"dcli", nombre:"Eliminar cliente", icono:"editar", path:'/Components/Clientes/ElimClientes'},
 
 ]
 const pagos = [

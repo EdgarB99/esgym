@@ -12,12 +12,7 @@ import Auth from './Auth';
 import React, { Component } from 'react';
 import firebase from './Config/Firebase';
 import DashboardG from './Components/Dashboard/DashboardG';
-import NewCliente from './Components/NewCliente/NewCliente'
-import NewPago from './Components/NewPago/NewPago'
-import ClientesG from './Components/Clientes/Clientes'
-import PagosG from './Components/Pagos/Pagos'
-import ECliente from './Components/Clientes/ModCliente'
-import ElimCliente from './Components/Clientes/ElimClientes'
+
 
 function App() {
   //const firebase = useFirebaseApp();

@@ -1,10 +1,13 @@
-import React from 'react'
-import {Grid, Button, Typography, TextField, CssBaseline, Container, Divider} from '@material-ui/core';
+import React,{useEffect,useState}from 'react'
+import {Grid, Button, Typography, CssBaseline, Container} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import { useFirebaseApp, useUser } from 'reactfire';
+
+
 
 /*OPCION PARA VER LOS PAGOS*/
 
@@ -13,7 +16,7 @@ const useStyles = makeStyles({
     root: {
       minWidth: 275,
       position: 'relative',
-      background: '#e0e0e0',
+      background: '#eFeFeF',
       
     },
     bullet: {
@@ -27,60 +30,47 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
+    submit: {
+      margin: (3, 0, 2),
+    },
   });
 
-  
-//Variables
-const Example1 =[
-    {idpag: 1, fechapag: '08/12/2021',user: 'usuario1', monto:234},
-    {idpag: 2, fechapag: '08/12/2021',user: 'usuario2', monto:50}, 
-    {idpag: 3, fechapag: '08/12/2021',user: 'usuario1', monto:234},
-    {idpag: 4, fechapag: '08/12/2021',user: 'usuario3', monto:200},
-    {idpag: 5, fechapag: '08/12/2021',user: 'usuario4', monto:150},
-    {idpag: 6, fechapag: '08/12/2021',user: 'usuario4', monto:150},
-    {idpag: 7, fechapag: '08/12/2021',user: 'usuario5', monto:300},
+const Clientes = () => {
 
-]
-
-const renderCardList = eventC => (objs) =>{
-
-    const {idpag,fechapag,user,monto} = objs
+    //Conexion 
+    const firebase= useFirebaseApp();
+    const [clientes, setClientes] = useState([]);
     const classes = useStyles();
 
-    return(
-        <Grid item xs md={4} lg={4} xl={4}>
-        <Card key={idpag} className={classes.root}>
-        <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            {fechapag}
-          </Typography>
-          <Typography variant="h5" component="h3">
-            {user}
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            Usuario
-          </Typography>
-          <Typography variant="body2" component="p">
-            Cantidad de pago: ${monto}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Eliminar</Button>
-        </CardActions>
-        <CardActions>
-          <Button size="small">Modificar Campos</Button>
-        </CardActions>
-        </Card>
-        </Grid>
-    )
-}
-const eventC = () => {
-    console.log("Avrido");  
-    //console.log(obj.path);
-   // history.push(enlace);
-  }
+    //PROCESO DE ELIMINACIÓN POR USER
+    function deleteCli (c){
+      console.log("Eliminado");  
+      firebase.database().ref(`Clientes/${c}`).remove()
+    }
 
-const Clientes = () => {
+    useEffect(() => {
+      firebase.database().ref('Clientes').on('value',(clientes) => {
+        let ArregloClis = []
+        try{
+          clientes.forEach((clientes)=>{
+            let newCli = {
+              apellido: clientes.val().apellido,
+              diapago: clientes.val().diapago,
+              email:clientes.val().email,
+              nombre:clientes.val().nombre,
+              nombreuser:clientes.val().nombreuser,
+              tiposus:clientes.val().tiposus,
+            }
+            ArregloClis.push(newCli)
+          })
+          setClientes(ArregloClis)
+        }catch(error){
+          console.log(error)
+          setClientes(null)
+        }
+      }
+    )}, [])
+
     return (
         <>
             <CssBaseline />
@@ -88,7 +78,35 @@ const Clientes = () => {
                 <Typography variant="h4" justify="center" >Lista de clientes</Typography>
                 <Grid container direction="row" spacing={3}>
                 <>
-                    {Example1.map(obj => renderCardList(eventC)(Example1))}
+                    {clientes.map(cliente =>{ 
+                      return (
+                        <Grid item xs md={4} lg={4} xl={4}>
+                            <Card key={cliente.nombreuser} className={classes.root}>
+                        <CardContent>
+                        <Typography className={classes.title} color="textSecondary" gutterBottom>
+                          Correo: {cliente.email}
+                        </Typography>
+                        <Typography variant="h5" component="h3">
+                          {cliente.nombre} {cliente.apellido}
+                        </Typography>
+                        <Typography className={classes.pos} color="textSecondary">
+                          Usuario: {cliente.nombreuser}
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                          Fecha de pago:   {cliente.diapago}
+                        </Typography>
+                        <Typography variant="body2" component="p">
+                          Tipo de subscripción:   {cliente.tiposus}
+                        </Typography>
+                        </CardContent>
+                        <CardActions>
+                        <Button variant="contained" size="small" color="secondary" className={classes.submit}
+                        onClick={() => deleteCli(cliente.nombreuser)}>Eliminar</Button>
+                        </CardActions>
+                        </Card>
+                        </Grid>
+                      )}
+                      )}
                 </>            
                 </Grid>
             </Container>
