@@ -2,7 +2,7 @@ import React from 'react'
 import {Grid, Button, Typography, TextField, CssBaseline, Container, Divider, Table} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
-import { useFirebaseApp, useUser } from 'reactfire';
+import { useFirebaseApp } from 'reactfire';
 
 
 const useStyles = makeStyles((theme) => ({

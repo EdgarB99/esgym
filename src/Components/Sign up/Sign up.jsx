@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
+  sessionStorage.setItem('Id', "No hay datos");
   const [nombreuser, setnombreuser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

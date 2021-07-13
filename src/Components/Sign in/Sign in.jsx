@@ -67,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  sessionStorage.setItem('Id', "No hay datos");
   const [nombreuser, setnombreuser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -74,9 +75,7 @@ export default function SignIn() {
   const [apellido, setapellido] = useState("");
   const [tipouser, settipouser] = useState("");
   const firebase= useFirebaseApp();
-  const user= useUser();
-
-
+  const user= useUser(); 
 
   useEffect(()=>{
     if(sessionStorage.getItem('Id')===""){

@@ -44,10 +44,10 @@ const Admin = ({clikclo, usert, nameuser, nombre , apellidos, correo}) => {
         </Button>
         </Link>
           </Grid>
-          <Grid item xs={12} md={4}>
+          {/*<Grid item xs={12} md={4}>
         <Button variant="contained" 
         color="secondary">Habilitar instructores</Button>
-          </Grid>
+          </Grid>*/}
           <Grid item xs={12} md={4}>
           <Button variant="contained" 
         color="secondary"

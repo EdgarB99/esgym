@@ -13,6 +13,8 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import {useHistory} from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import { useFirebaseApp, useUser } from 'reactfire';
+import  'firebase/auth';
 
 //Listas
 const clientes = [
@@ -30,7 +32,8 @@ const pagos = [
 const oprapida = [
   {tipo:"ncli", nombre:"Nuevo cliente", icono:"nuevo",  path:'/Components/NewCliente/NewCliente'},
   {tipo:"npag", nombre:"Nuevo pago", icono:"nuevop",  path:'/Components/NewPago/NewPago'},
-  {tipo:"sal", nombre:"Cerrar Sesión", icono:"salir",  path:'/sal'},
+  //{tipo:"sal", nombre:"Cerrar Sesión", icono:"salir",  path:'/sal'},
+  //{tipo:"hom", nombre:"Pagina de inicio", icono:"home",  path:'/Components/Blog/Blog'},
 ]
 
 
@@ -120,6 +123,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const classes = useStyles();
+  const user= useUser(); 
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -133,7 +137,10 @@ export default function Dashboard() {
   const onclickHandler = enlace =>{
       console.log("Avrido");  
       //console.log(obj.path);
-      history.push(enlace);
+      if (enlace==='/sal'){
+
+      }
+      else{history.push(enlace);}
     }
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);

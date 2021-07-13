@@ -49,14 +49,13 @@ const Calculadora = () => {
 
   function handleSubmit() {
       setStack(stack + peso/(altura*altura))
-      
       if(peso/(altura*altura)>30){
         setmsj("Su imc es de:");
-          setestado(parseFloat(estado).toFixed(2) + "Usted tiene obesidad")
+          setestado(estado+"Usted tiene obesidad")
          esalud='"#ca0404"';
       }else{
         setmsj("Su imc es de:");
-        setestado(parseFloat(estado).toFixed(2) + "Usted esta sano")
+        setestado(estado+"Usted esta sano")
         esalud='"rgb(4, 228, 4)"';
       }
   }

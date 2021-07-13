@@ -2,7 +2,7 @@ import React from 'react'
 import {BrowserRouter as Router2
     ,Switch as S2
     ,Route as R2
-} from 'react-router-dom';
+    ,Link} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
@@ -14,8 +14,12 @@ import ClientesG from '../Clientes/Clientes'
 import PagosG from '../Pagos/Pagos'
 import ECliente from '../Clientes/ModCliente'
 import ElimCliente from '../Clientes/ElimClientes'
-//import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import {IconContext} from 'react-icons';
+import { HiHome } from "react-icons/hi";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,11 +37,21 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(4),
     },
   }));
+
+  const sections = [
+    { title: 'Inicio', to:"/Components/Blog/Blog" },
+    { title: 'Instalaciones', to:"/Components/Galeria/Galeria" },
+    { title: 'Horarios', to:"/Components/Horarios/Horarios" },
+    { title: 'Acerca de',  to:"/Components/Acerca de/Acerca" },
+  ];
+
 const DashboardG = () => {
 //ESTILOS
+
 const classes = useStyles();
 
 return ( 
+    <>
     <Router2>
         <div className={classes.root}>
         <Dashboard/>
@@ -60,6 +74,8 @@ return (
                         <R2 path = '/Components/NewCliente/NewCliente'>
                             <NewCliente/>
                         </R2>
+                        <R2 path = '/Components/Blog/Blog'>
+                        </R2>
                         <R2 path = '/Components/Clientes/ModCliente'>
                             <ECliente/>
                         </R2>
@@ -80,6 +96,17 @@ return (
             </main>
             </div>  
     </Router2>
+    <Link to='/Components/Blog/Blog'>
+    <ListItem button>
+        <ListItemIcon>
+        <IconContext.Provider value={{size:'2em'}}>
+            <HiHome/>
+        </IconContext.Provider>
+        </ListItemIcon>
+        <ListItemText primary={"Regresar a inicio/Home"} />
+        </ListItem>
+    </Link>
+    </>
 );
 }
 

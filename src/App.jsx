@@ -6,11 +6,8 @@ import Acerca from './Components/Acerca de/Acerca'
 import Blog from './Components/Blog/Blog';
 import Suscripcion from './Components/Sesion/Suscripcioncli';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { useFirebaseApp } from 'reactfire';
 import Horarios from './Components/Horarios/Horarios'
-import Auth from './Auth';
 import React, { Component } from 'react';
-import firebase from './Config/Firebase';
 import DashboardG from './Components/Dashboard/DashboardG';
 
 
