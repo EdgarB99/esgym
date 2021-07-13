@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 
-const Editarcli = () => {
+const ModCliente = () => {
     const classes = useStyles();
   return (
       <div>
@@ -143,18 +143,20 @@ const Editarcli = () => {
                 autoFocus
               />
             </Grid>
-            <Button
-        fullWidth
-        variant="contained"
-        color="secondary"
-        className={classes.submit}
-      >
-        Agregar Cambios
-      </Button>
+            <Grid container justify="center" alignItems="center" >
+            <Grid item sm={10} md={10} lg={5} xl={5} spacing={4}>
+                <Button fullWidth variant="contained" color="secondary" className={classes.submit}> 
+                    Agregar Cambios</Button>
+            </Grid>
+            <Grid item sm={10} md={10} lg={5} xl={5}>
+                <Button  fullWidth variant="contained" color="secondary" className={classes.submit}>
+                    Cancelar </Button>
+            </Grid>
+            </Grid>
         </Grid>
     </Container>
 </div>
   )
 }
 
-export default Editarcli
+export default ModCliente

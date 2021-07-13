@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid, Button, Typography, TextField, CssBaseline, Container, Divider, Table} from '@material-ui/core';
+import {Grid, Button, Typography, TextField, CssBaseline, Container, Divider} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 
-const Eliminarcli = () => {
+const ElimClientes = () => {
     const classes = useStyles();
   return (
       <div>
     <CssBaseline />
-    <Container maxWidth="sm">
-    <Typography variant="h3">Editar datos del cliente</Typography>
+    <Container maxWidth="sm" justify="center" alignItems="center">
+    <Typography variant="h3" justify="center" >Eliminar cliente</Typography>
     <Grid container spacing={2}>
     <Grid item xs={12} sm={12}>
         <TextField
@@ -143,18 +143,20 @@ const Eliminarcli = () => {
                 autoFocus
               />
             </Grid>
-            <Button
-        fullWidth
-        variant="contained"
-        color="secondary"
-        className={classes.submit}
-      >
-        Eliminar cliente
-      </Button>
+            <Grid container justify="center" alignItems="center" >
+            <Grid item sm={10} md={10} lg={5} xl={5} spacing={4}>
+                <Button fullWidth variant="contained" color="secondary" className={classes.submit}> 
+                    Eliminar Cliente</Button>
+            </Grid>
+            <Grid item sm={10} md={10} lg={5} xl={5}>
+                <Button  fullWidth variant="contained" color="secondary" className={classes.submit}>
+                    Cancelar </Button>
+            </Grid>
+            </Grid>
         </Grid>
     </Container>
 </div>
   )
 }
 
-export default Eliminarcli
+export default ElimClientes

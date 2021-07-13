@@ -36,7 +36,7 @@ function Copyright() {
 const sections = [
   { title: 'Inicio', to:"/Components/Blog/Blog" },
   { title: 'Instalaciones', to:"/Components/Galeria/Galeria" },
-  { title: 'Horarios', url: '#' },
+  { title: 'Horarios', to:"/Components/Horarios/Horarios" },
   { title: 'Acerca de',  to:"/Components/Acerca de/Acerca" },
 ];
 

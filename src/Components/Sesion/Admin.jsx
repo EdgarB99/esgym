@@ -2,6 +2,7 @@ import React from 'react'
 import PropType from 'prop-types';
 import { Container, Typography, Button, CssBaseline, Grid} from '@material-ui/core';
 import Header from '../Blog/Headus';
+import DashboardG from '../Dashboard/DashboardG';
 
 
 const sections = [
@@ -15,6 +16,8 @@ const Admin = ({clikclo, usert, nameuser, nombre , apellidos, correo}) => {
   return (
       <div>
           <CssBaseline />
+          <>
+          <DashboardG/>
           <Header sections={sections} clikclo={clikclo} />
     <Container maxWidth="md">
         <Typography variant="h2">
@@ -49,6 +52,7 @@ const Admin = ({clikclo, usert, nameuser, nombre , apellidos, correo}) => {
        
      </Grid>
     </Container>
+    </>
     </div>
   )
 }

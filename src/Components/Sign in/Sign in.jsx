@@ -78,7 +78,7 @@ export default function SignIn() {
 
 
 
-  useEffect(()=>{
+  /*useEffect(()=>{
     if(sessionStorage.getItem('Id')===""){
 
     }else{
@@ -103,7 +103,7 @@ export default function SignIn() {
   }
 }
   ,[]);
-  
+  */
 
   function lectura(userId) {
     if(userId===""){

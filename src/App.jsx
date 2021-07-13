@@ -11,8 +11,6 @@ import Horarios from './Components/Horarios/Horarios'
 import Auth from './Auth';
 import React, { Component } from 'react';
 import firebase from './Config/Firebase';
-import Agregar from './Components/Clientes/Agregarcli';
-import Editar from './Components/Clientes/Eliminarcli';
 
 function App() {
   //const firebase = useFirebaseApp();
