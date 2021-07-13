@@ -48,25 +48,25 @@ return (
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
                     <S2>
-                         <R2 exact path='/'>
+                         <R2 exact path='/Components/Dashboard/DashboardG'>
                             <h2>Bienvenido!</h2> 
                         </R2>
-                        <R2 path = '/tcli'>
+                        <R2 path = '/Components/Clientes/Clientes'>
                             <ClientesG/>
                         </R2>
-                        <R2 path = '/tpag'>
+                        <R2 path = '/Components/Pagos/Pagos'>
                             <PagosG/>
                         </R2>
-                        <R2 path = '/ncli'>
+                        <R2 path = '/Components/NewCliente/NewCliente'>
                             <NewCliente/>
                         </R2>
-                        <R2 path = '/ecli'>
+                        <R2 path = '/Components/Clientes/ModCliente'>
                             <ECliente/>
                         </R2>
-                        <R2 path = '/dcli'>
+                        <R2 path = '/Components/Clientes/ElimClientes'>
                             <ElimCliente/>
                         </R2>
-                        <R2 path = '/npag'>
+                        <R2 path = '/Components/NewPago/NewPago'>
                             <NewPago/>
                         </R2>
                         <R2>

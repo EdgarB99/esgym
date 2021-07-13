@@ -16,20 +16,20 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 //Listas
 const clientes = [
-  {tipo:"tcli", nombre:"Todos los clientes", icono:"todos", path:'/tcli'},
+  {tipo:"tcli", nombre:"Todos los clientes", icono:"todos", path:'/Components/Clientes/Clientes'},
   //{tipo:"cli", nombre:"Clientes vencidos", icono:"vencidos"},
   //{tipo:"rcli", nombre:"Clientes regulares", icono:"avencer", path:'/rcli'},
-  {tipo:"ecli", nombre:"Editar cliente", icono:"editar", path:'/ecli'},
-  {tipo:"dcli", nombre:"Eliminar cliente", icono:"editar", path:'/dcli'},
+  {tipo:"ecli", nombre:"Editar cliente", icono:"editar", path:'/Components/Clientes/ModCliente'},
+  {tipo:"dcli", nombre:"Eliminar cliente", icono:"editar", path:'/Components/Clientes/ElimClientes'},
 
 ]
 const pagos = [
-  {tipo:"tpag", nombre:"Todos los pagos", icono:"todos", path:'/tpag'},
+  {tipo:"tpag", nombre:"Todos los pagos", icono:"todos", path:'/Components/Pagos/Pagos'},
   //{tipo:"pag", nombre:"Pagos vencidos", icono:"vencidos"},
 ]
 const oprapida = [
-  {tipo:"ncli", nombre:"Nuevo cliente", icono:"nuevo",  path:'/ncli'},
-  {tipo:"npag", nombre:"Nuevo pago", icono:"nuevop",  path:'/npag'},
+  {tipo:"ncli", nombre:"Nuevo cliente", icono:"nuevo",  path:'/Components/NewCliente/NewCliente'},
+  {tipo:"npag", nombre:"Nuevo pago", icono:"nuevop",  path:'/Components/NewPago/NewPago'},
   {tipo:"sal", nombre:"Cerrar Sesión", icono:"salir",  path:'/sal'},
 ]
 

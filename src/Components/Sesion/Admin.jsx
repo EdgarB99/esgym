@@ -3,7 +3,7 @@ import PropType from 'prop-types';
 import { Container, Typography, Button, CssBaseline, Grid} from '@material-ui/core';
 import Header from '../Blog/Headus';
 import DashboardG from '../Dashboard/DashboardG';
-
+import { Link } from "react-router-dom";
 
 const sections = [
     { title: 'Inicio', to:"/Components/Blog/Blog" },
@@ -17,7 +17,7 @@ const Admin = ({clikclo, usert, nameuser, nombre , apellidos, correo}) => {
       <div>
           <CssBaseline />
           <>
-          <DashboardG/>
+         
           <Header sections={sections} clikclo={clikclo} />
     <Container maxWidth="md">
         <Typography variant="h2">
@@ -37,8 +37,12 @@ const Admin = ({clikclo, usert, nameuser, nombre , apellidos, correo}) => {
         </Typography>
         <Grid container spacing={5}>
         <Grid item xs={12} md={4}>
-        <Button variant="contained" 
-        color="secondary">Registro de clientes</Button>
+          <Link to="/Components/Dashboard/DashboardG">
+        <Button  variant="contained" 
+        color="secondary">
+          Panel de administración 
+        </Button>
+        </Link>
           </Grid>
           <Grid item xs={12} md={4}>
         <Button variant="contained" 

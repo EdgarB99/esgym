@@ -11,6 +11,13 @@ import Horarios from './Components/Horarios/Horarios'
 import Auth from './Auth';
 import React, { Component } from 'react';
 import firebase from './Config/Firebase';
+import DashboardG from './Components/Dashboard/DashboardG';
+import NewCliente from './Components/NewCliente/NewCliente'
+import NewPago from './Components/NewPago/NewPago'
+import ClientesG from './Components/Clientes/Clientes'
+import PagosG from './Components/Pagos/Pagos'
+import ECliente from './Components/Clientes/ModCliente'
+import ElimCliente from './Components/Clientes/ElimClientes'
 
 function App() {
   //const firebase = useFirebaseApp();
@@ -25,6 +32,14 @@ function App() {
         <Route exact path="/Components/Horarios/Horarios" component={Horarios}/>
         <Route exact path="/Components/Acerca de/Acerca" component={Acerca}/>
         <Route exact path="/Components/Sesion/Suscripcioncli" component={Suscripcion}/>
+        <Route exaxt path="/Components/Dashboard/DashboardG" component={DashboardG}/>  
+        <Route exaxt path="/Components/NewCliente/NewCliente" component={DashboardG}/>
+        <Route exaxt path="/Components/NewPago/NewPago" component={DashboardG}/>
+        <Route exaxt path="/Components/Clientes/Clientes" component={DashboardG}/>
+        <Route exaxt path="/Components/Pagos/Pagos" component={DashboardG}/>
+        <Route exaxt path="/Components/Clientes/ModCliente" component={DashboardG}/>
+        <Route exaxt path="/Components/Clientes/ElimClientes" component={DashboardG}/>
+
       </Router>
      
   );
